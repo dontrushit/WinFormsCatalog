@@ -1,10 +1,10 @@
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
-using WinFormsKursach.Helpers;
-using WinFormsKursach.Models;
+using WinFormsCatalog.Helpers;
+using WinFormsCatalog.Models;
 
-namespace WinFormsKursach
+namespace WinFormsCatalog
 {
     public partial class Form2 : Form
     {

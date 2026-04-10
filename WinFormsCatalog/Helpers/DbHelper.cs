@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace WinFormsKursach.Helpers
+namespace WinFormsCatalog.Helpers
 {
     public static class DbHelper
     {

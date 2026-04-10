@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Windows.Forms;
-using WinFormsKursach.Helpers;
-using WinFormsKursach.Models;
+using WinFormsCatalog.Helpers;
+using WinFormsCatalog.Models;
 
-namespace WinFormsKursach
+namespace WinFormsCatalog
 {
     public partial class Form3 : Form
     {

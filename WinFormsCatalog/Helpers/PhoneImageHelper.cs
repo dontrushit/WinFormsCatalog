@@ -1,9 +1,9 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using WinFormsKursach.Models;
+using WinFormsCatalog.Models;
 
-namespace WinFormsKursach.Helpers
+namespace WinFormsCatalog.Helpers
 {
     public static class PhoneImageHelper
     {

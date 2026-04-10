@@ -1,4 +1,4 @@
-namespace WinFormsKursach
+namespace WinFormsCatalog
 {
     internal static class Program
     {

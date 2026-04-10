@@ -1,4 +1,4 @@
-namespace WinFormsKursach.Models
+namespace WinFormsCatalog.Models
 {
     public class Phones
     {

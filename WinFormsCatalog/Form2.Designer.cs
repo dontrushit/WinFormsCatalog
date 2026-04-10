@@ -1,4 +1,4 @@
-namespace WinFormsKursach
+namespace WinFormsCatalog
 {
     partial class Form2
     {
