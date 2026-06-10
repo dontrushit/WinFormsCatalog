@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: catalog
+          POSTGRES_USER: catalog
+          POSTGRES_PASSWORD: catalog
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U catalog -d catalog"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      ConnectionStrings__CatalogDb: Host=localhost;Port=5432;Database=catalog;Username=catalog;Password=catalog
+      CATALOG_DB_CONNECTION: Host=localhost;Port=5432;Database=catalog;Username=catalog;Password=catalog
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Install EF tools
+        run: |
+          dotnet tool install dotnet-ef --global
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Restore
+        run: dotnet restore WinFormsCatalog.Tests/WinFormsCatalog.Tests.csproj
+
+      - name: Build tests
+        run: dotnet build WinFormsCatalog.Tests/WinFormsCatalog.Tests.csproj --no-restore -c Release
+
+      - name: Apply migrations
+        run: >
+          dotnet ef database update
+          --project WinFormsCatalog.Core/WinFormsCatalog.Core.csproj
+          --connection "$ConnectionStrings__CatalogDb"
+
+      - name: Test
+        run: dotnet test WinFormsCatalog.Tests/WinFormsCatalog.Tests.csproj --no-build -c Release
