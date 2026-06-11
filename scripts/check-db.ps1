@@ -12,4 +12,4 @@ dotnet ef database update --project "$root\WinFormsCatalog.Core" --startup-proje
 Write-Host ""
 Write-Host "Running database integration tests..."
 $env:CATALOG_DB_CONNECTION = $ConnectionString
-dotnet test "$root\WinFormsCatalog.Tests\WinFormsCatalog.Tests.csproj" -c Release --filter "FullyQualifiedName~IntegrationTests|FullyQualifiedName~OrderService"
+dotnet test "$root\WinFormsCatalog.Tests\WinFormsCatalog.Tests.csproj" -c Release --filter "FullyQualifiedName~CatalogServiceTests|FullyQualifiedName~OrderServiceTests"

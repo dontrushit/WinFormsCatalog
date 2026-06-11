@@ -2,10 +2,10 @@ using WinFormsCatalog.Models;
 
 namespace WinFormsCatalog.Tests;
 
-public class CatalogServiceIntegrationTests
+public class CatalogServiceTests
 {
     [Fact]
-    public void Search_ReturnsSeededCatalog_WhenDatabaseIsAvailable()
+    public void Search_ReturnsAllPhones()
     {
         if (!IntegrationTestFixture.IsDatabaseAvailable())
             return;
@@ -19,7 +19,7 @@ public class CatalogServiceIntegrationTests
     }
 
     [Fact]
-    public void Search_FiltersByProducerInDatabase()
+    public void Search_FiltersByProducer()
     {
         if (!IntegrationTestFixture.IsDatabaseAvailable())
             return;
@@ -35,7 +35,7 @@ public class CatalogServiceIntegrationTests
     }
 
     [Fact]
-    public void GetShopOffers_ReturnsPricesOrderedByValue()
+    public void GetShopOffers_SortsByPrice()
     {
         if (!IntegrationTestFixture.IsDatabaseAvailable())
             return;

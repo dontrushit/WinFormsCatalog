@@ -41,7 +41,7 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
-## Legacy database
+## Access
 *.accdb
 *.mdb
 

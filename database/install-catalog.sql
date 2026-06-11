@@ -58,7 +58,6 @@ VALUES
     ('20260606210427_SeedCatalogData', '9.0.6')
 ON CONFLICT ("MigrationId") DO NOTHING;
 
--- Seed (только если каталог пустой)
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM phones LIMIT 1) THEN

@@ -2,10 +2,10 @@ using WinFormsCatalog.Models;
 
 namespace WinFormsCatalog.Tests;
 
-public class OrderServiceIntegrationTests
+public class OrderServiceTests
 {
     [Fact]
-    public void CreateOrder_PersistsOrder_WhenDatabaseIsAvailable()
+    public void CreateOrder_SavesToDatabase()
     {
         if (!IntegrationTestFixture.IsDatabaseAvailable())
             return;

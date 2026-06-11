@@ -13,7 +13,7 @@ namespace WinFormsCatalog
         private readonly ICatalogService _catalogService;
 
         public Form3()
-            : this(null, "Каталог", 0, CompositionRoot.Services.GetRequiredService<ICatalogService>())
+            : this(null, "Каталог", 0, AppServices.Provider.GetRequiredService<ICatalogService>())
         {
         }
 
@@ -23,7 +23,7 @@ namespace WinFormsCatalog
         }
 
         public Form3(Phone phone, string storeName, decimal price)
-            : this(phone, storeName, price, CompositionRoot.Services.GetRequiredService<ICatalogService>())
+            : this(phone, storeName, price, AppServices.Provider.GetRequiredService<ICatalogService>())
         {
         }
 

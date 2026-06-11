@@ -11,12 +11,12 @@ namespace WinFormsCatalog
         private readonly ICatalogService _catalogService;
 
         public Form2()
-            : this(null, CompositionRoot.Services.GetRequiredService<ICatalogService>())
+            : this(null, AppServices.Provider.GetRequiredService<ICatalogService>())
         {
         }
 
         public Form2(Phone phone)
-            : this(phone, CompositionRoot.Services.GetRequiredService<ICatalogService>())
+            : this(phone, AppServices.Provider.GetRequiredService<ICatalogService>())
         {
         }
 

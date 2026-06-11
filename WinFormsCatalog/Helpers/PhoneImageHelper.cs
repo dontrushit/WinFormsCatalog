@@ -12,13 +12,6 @@ public static class PhoneImageHelper
         box.Image?.Dispose();
         box.Image = null;
 
-        string placeholderPath = Path.Combine(Application.StartupPath, "Data", PlaceholderFileName);
-        if (TryLoadImage(placeholderPath, out var placeholder))
-        {
-            box.Image = placeholder;
-            return;
-        }
-
         string dataRoot = Path.Combine(Application.StartupPath, "Data");
         string dataImages = Path.Combine(dataRoot, "Images");
         string fileName = !string.IsNullOrWhiteSpace(phone.ImageUrl) ? phone.ImageUrl.Trim() : $"{phone.Id}.jpg";
@@ -39,6 +32,10 @@ public static class PhoneImageHelper
                 return;
             }
         }
+
+        string placeholderPath = Path.Combine(dataRoot, PlaceholderFileName);
+        if (TryLoadImage(placeholderPath, out var placeholder))
+            box.Image = placeholder;
     }
 
     private static bool TryLoadImage(string path, out Image? image)

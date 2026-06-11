@@ -11,7 +11,7 @@ namespace WinFormsCatalog
         private CatalogFilterOptions _filterOptions = new();
         private decimal _defaultMaxPrice;
 
-        public Form1() : this(CompositionRoot.Services.GetRequiredService<ICatalogService>())
+        public Form1() : this(AppServices.Provider.GetRequiredService<ICatalogService>())
         {
         }
 

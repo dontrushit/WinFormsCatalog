@@ -6,13 +6,13 @@ using WinFormsCatalog.Services;
 
 namespace WinFormsCatalog;
 
-public static class CompositionRoot
+public static class AppServices
 {
-    private static ServiceProvider? _serviceProvider;
+    private static ServiceProvider? _provider;
 
-    public static IServiceProvider Services => _serviceProvider ??= BuildServiceProvider();
+    public static IServiceProvider Provider => _provider ??= Build();
 
-    private static ServiceProvider BuildServiceProvider()
+    private static ServiceProvider Build()
     {
         var services = new ServiceCollection();
         services.AddDbContextFactory<CatalogDbContext>(options =>
